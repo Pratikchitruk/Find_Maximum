@@ -4,29 +4,28 @@ using System.Text;
 
 namespace FindMaximum
 {
-    public class MaxNumCheck
+    public class MaxNumCheck<T> where T : IComparable
     {
-        public int IntMax(int num1, int num2, int num3)
+        public T firstValue, secondValue, thirdValue;
+
+        //Generic Type extends Comparable
+
+        public MaxNumCheck(T firstValue, T secondValue, T thirdValue)
         {
-            if (num1.CompareTo(num2) > 0 && num1.CompareTo(num3) > 0)
-                return num1;
-            if (num2.CompareTo(num1) > 0 && num2.CompareTo(num3) > 0)
-                return num2;
-            if (num3.CompareTo(num1) > 0 && num3.CompareTo(num2) > 0)
-                return num3;
-            return 0;
+            this.firstValue = firstValue;
+            this.secondValue = secondValue;
+            this.thirdValue = thirdValue;
         }
 
-        public float FloatMax(float num1, float num2, float num3)
+        public T MaximumOf()
         {
-            if (num1.CompareTo(num2) > 0 && num1.CompareTo(num3) > 0)
-                return num1;
-            if (num2.CompareTo(num1) > 0 && num2.CompareTo(num3) > 0)
-                return num2;
-            if (num3.CompareTo(num1) > 0 && num3.CompareTo(num2) > 0)
-                return num3;
-            return 0;
+            if (firstValue.CompareTo(secondValue) > 0 && firstValue.CompareTo(thirdValue) > 0)
+                return firstValue;
+            if (secondValue.CompareTo(firstValue) > 0 && secondValue.CompareTo(thirdValue) > 0)
+                return secondValue;
+            if (thirdValue.CompareTo(firstValue) > 0 && thirdValue.CompareTo(secondValue) > 0)
+                return thirdValue;
+            throw new Exception(" All three values are Equal. ");
         }
-
     }
 }
